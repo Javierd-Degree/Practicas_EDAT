@@ -1,0 +1,30 @@
+Borramos products porque no era necesario y vendemos directamente las ediciones, por tanto en ventas tenemos un FK a edition ISBN en vez de a product id
+
+Añadimos invoice ID a sales porque id es la primary key, e invoiceid en la tabla temporal se repite
+
+Borramos el campo de apellido en authors porque en los datos que nos dan los apellidos y el nombre estan juntos.
+Cambiamos el tamaño del nombre de authors de 128 a 256, para que quepa el nombre con los apellidos.
+
+Quitamos los campos de name, editor_name y edition_date de la tabla editions porque no tenemos datos para rellenarlos.
+
+En editions quitamos el _ISO de language y cambiamos su tamaño de varchar 2 a varchar 20 porque los datos proporcionados de lenguaje no estan en formato ISO
+
+En la tabla sales y editions, hemos tenido que permitir que el precio sea NULL, pues habia algunos libros sin precio. Podriamos haberlo implementado como -1, por ejemplo, y haber conservado la restriccion not null, pero esto es basicamente lo mismo y bastante mas simple
+
+Cambiamos el ID de books, authors, relations y discounts a SERIAL para que se numeren autom´aticamente. El resto, los proporcionados por la base de datos, los matenemos como INT para conservar los valores de la base de datos. 
+
+Quitamos el nt null de date en sales porque no sabemos cuando se han hecho las compras que insertamos mediante odbc
+
+En discounts, el decuento es un int en vez de real, porque va de 0 a 100 simplemente
+
+Añadimos nick a users porqu es lo que se usa para llamar a la funcion buy de odbc
+
+=================================
+A la hora de guardar los datos en sales, en discount ponemos siempre NULL, porque en los datos no hay ningun tipo de descuento, pero ¿Lo necesitamos para futuros querties?, y en payment_method ponemos siempre 0, porque todos los pagos son tarjeta de credito
+
+Al insertar los libros en la base de datos, si no tienen fecha de publicacion, ponemos una actual
+
+
+===============================
+
+

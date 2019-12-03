@@ -1,0 +1,17 @@
+A
+
+We have managed to get all the querties working without any kind of redundancies. We could also have used a Editorial table for exaple, but this would have made some querties more difficult, and it wasn' t necessary on our project.
+
+We could have also used an enum to name the payment methods, but as we still have not learn this in class, we decided not no do it.
+
+If we had not used the products table, we could sell editions and some querties would be simplified, but the store wouldt be able to keep track of the available number of each edition for example.
+
+B
+Son los comentarios que he puesto en cada una de los querties
+
+#C & D
+We include the database creation code, as you told us it was better that the ER scheme.
+COPIAR TODO EL CODIFO
+
+E
+QUERTIES CODIGO 

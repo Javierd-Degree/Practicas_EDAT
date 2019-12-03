@@ -1,0 +1,4 @@
+ start_date | end_date 
+------------+----------
+(0 filas)
+

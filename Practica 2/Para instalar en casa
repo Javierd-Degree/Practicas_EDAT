@@ -1,0 +1,15 @@
+sudo apt-get unix odbc
+locate odbc.ini
+
+copiamos /usr/share/doc/odbc-postgresql/examples/odbc.ini.template en el escritorio
+
+ODBCManageDataSourcesQ4
+
+
+Control de errores de elias
+SQLCHAR state[6] = {0}, message[1000];
+                SQLINTEGER sth = 0;
+                SQLSMALLINT len;
+                SQLGetDiagRec(SQL_HANDLE_STMT, stmt, 1, state, &sth, message, 1000, &len);
+                fprintf(stderr, "[%s] %s\n", state, message);
+

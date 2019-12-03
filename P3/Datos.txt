@@ -1,0 +1,28 @@
+fseek(fileponiter, offset(position from the start of the file), SEEK_SET);
+
+fread(direcction where to read, size of the element, # elements, filpointer)
+
+
+ENVIAR COSAS QUE SE PUEDAN PROBAR Y DUMP DE LA ANTERIOR
+
+Hemos definido una estructura que se llama irecord y que guarda una clave, y un array con las posiciones de todos los records que tienen dicha clave. USamos ademas dos enteros para saber el numero de posiciones del array y la capacidad maxima que tiene dicho array.
+Para el indice usamos un array de punteros a irecord, un string con el nobre del archivo del indice de forma que podemos abrirlo y cerrarlo a nuestra voluntad (por ejemplo, al guardar tenemos que borrar todo y volverlo a escribir entero para asegurarnos de que esta ordenado), dos ints que nos indican el numero de irecords y el maximo numero que puede guardar, y por ultimo una variable que nos indica el tipo de dato que tenemos como key
+
+PARA EL INDEX, guardamos al principio de la tabla el tipo del key y el numero de records totales. Despues, guardamos para cada key la key, el numero de records de dicha key, todos los records seguidos.
+A la hora de insertar, vamos reservando arrays de un tamaño mayor que el que necesitamos, dee forma que tenemos un margen para insertar varios a la vez y no tener que resevar memoria y hacer re-allocs constantemente, lo que seria muy poco eficiente. El margen que dejamos esta definido en una macro llamada NUM_ADD, y para insertar usamos el algoritmo inserSort, de forma que se mantiene la tabla ordenada.
+Por ultimo, usamos busqueda binaria en ña tabla records dentro del indice para encontrar todos los records que tengan una misma key.
+
+Creamos el indice en score_index, e insertamos los datos del indice a le vez que los de la tabla. Luego en suggest_index.c usamos dichos datos. 
+
+
+
+
+Para hacer el ejercicio opcional, guardamos para cada key, la longitud que ocupa la clave, por si es un string, la clave en si, el numero de records que tiene dicha clave, y la posici´on de cada uno de estos records.
+Usamos un puntero a void para guardar la clave, de forma que lo usamos como un puntero a char si la clave es del tipo STR o como un puntero a INT si la clave es del tipo INT.
+Ademas, hemos tenido que desarrollar una funcion cmp que nos permite comparar el key segun sea INT o STR, para asi poder usar la busqueda binaria etc
+
+Para el scorematch, como es una parte opcional hemos decicido hacerlo por separado, asi que en es en dicho programa donde creamos el indice, leyendo la tabla por completo. 
+
+
+
+Once the database books is created on the localhost server, with alumnodb as postgres' username and password using the provided dump, you can just execute the .sh provided to see a working example. The text in blue and purple are just our explanation, while the others are the program values.
